@@ -3,8 +3,8 @@
 	<article class="media box">
 		<figure class="media-left">
 			<p class="image is-64x64">
-				<%= gravatar_image_tag(tweeet.user.email, size: 64, alt: tweeet.user.name) %>
-			</p>
+				<img src="https://bulma.io/images/placeholders/64x64.png">
+         </p>
 		</figure>
 		<div class="media-content">
 			 <%= render 'tweeets/form' %>
@@ -16,7 +16,8 @@
   	<article class="media">
   		<div class="media-left">
   			<figure class="image is-64x64">
-  				<%= gravatar_image_tag(tweeet.user.email, size: 64, alt: tweeet.user.name) %>
+  				<img src="https://bulma.io/images/placeholders/64x64.png">
+         </p>
   			</figure>
   		</div>
   		<div class="media-content">
@@ -45,4 +46,3 @@
   </div>
 <% end %>
 </div>
-<%# user id %>
