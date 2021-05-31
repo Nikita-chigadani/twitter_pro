@@ -51,6 +51,14 @@
 		 		<%= f.button :submit, "Sign up", class:"button is-info is-medium" %>
 		 	</div>
 		</div>
+
+		<div class="field">
+			<div class="control">
+				<strong>Upload a profile Pic:</strong>
+				<%= f.file_field :avatar%>
+					
+			</div>
+		</div>
  <% end %>
 			<br/>
 			<%= render "devise/shared/links" %>

@@ -1,0 +1,10 @@
+<% @users.each do |user| %>
+    
+
+      <% if user.usename != current_user.usename %>
+        <%=h user.usename %>
+        <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :tweeet %>
+      <% end %>
+    
+    
+  <% end %>

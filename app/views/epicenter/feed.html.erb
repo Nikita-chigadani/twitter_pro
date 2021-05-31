@@ -1,0 +1,10 @@
+<p>Here is what your "friends" are saying:</p>
+
+<div>
+    <% @following_tweeets.each do | tweeet| %>
+        <div>
+            <p>@<%= tweeet.user.usename %></p>
+            <p><%= tweeet.tweeet%></p>
+        </div>
+    <% end %>
+</div>

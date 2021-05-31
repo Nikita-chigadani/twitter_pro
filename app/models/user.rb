@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tweeets
-  
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  mount_uploader :avatar, AvatarUploader
+
+  serialize :following, Array
 
 end
