@@ -30,16 +30,18 @@
 				</div>
 				<div class="level-item has-centered-text">
 					<div>
-						
-						<%= link_to "Make Friends", friendships_path %>
-				<%= link_to "My Friends", { :controller => "friendships", :action => "show", :id => current_user } %>
+					 <p class="heading">Followers</p>
+					 <p class="title is-6"><%= current_user.followers.count %></p>
 					</div>
 				</div>
-					<div class="level-item has-centered-text">
+				<div class="level-item has-centered-text">
 					<div>
-						
+					 	<p class="heading">Following</p>
+					 	<p class="title is-6"><%= current_user.following.count %></p>
 					</div>
+						
 				</div>
+			
 			</div>
 		</div>
 	</nav>

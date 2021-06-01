@@ -1,26 +1,19 @@
 class FriendshipsController < ApplicationController
-    def index
-        @users = User.all
-      end
-      
-      def show
-        @user = current_user
-      end
+    
     def create
-        @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-        if @friendship.save
-          flash[:notice] = "Added friend."
-          redirect_to root_url
-        else
-          flash[:error] = "Error occurred when adding friend."
-          redirect_to root_url
-        end
-      end
-      
-      def destroy
-        @friendship = current_user.friendships.find(params[:id])
+        other_user = User.find(params[:user_id])
+        @friendship = Friendship.new(follower_id: current_user.id,
+                                      followed_id: other_user.id)
+                                         
+    
+        @friendship.save
+        redirect_to user_path(other_user)
+    end
+
+    def destroy
+        @friendship = Friendship.find(params[:id])
         @friendship.destroy
-        flash[:notice] = "Successfully destroyed friendship."
-        redirect_to root_url
+        redirect_to user_path(@friendship.followed_id)
       end
+
 end
