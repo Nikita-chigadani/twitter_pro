@@ -1,17 +1,27 @@
 <h1>Follow Friends</h1>
 <% users.each do |user| %>
+ <% if user.usename != current_user.usename %>
+ <div class="box">
+  	<article class="media">
+  		<div class="media-left">
+  			<figure class="image is-64x64">
+  				<img src="https://bulma.io/images/placeholders/64x64.png">
+  			</figure>
+  		</div>
     <div id="<%= dom_id(user) %>">
-
+      
       <p><%= user.name %></p>
 
         @<%= user.usename%><br>
-        <% if user.usename != current_user.usename %>
+        
             <%= link_to 'follow', user_friendships_path(user),method: :post, class: 'btn btn-danger' unless @friendship.present? %>
             <%= link_to 'unfollow', friendship_path(@friendship.id), method: :delete, class: 'btn btn-danger' if @friendship.present? %>
-            
-        <% end %>
+            <br><br>
+     <% end %>
       
 
     </div>
+    </article>
+ </div>
 <% end %>
 

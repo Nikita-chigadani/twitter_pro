@@ -2,7 +2,10 @@
 
 <p>
   <strong>Tweeet:</strong>
-  <%= @tweeet.tweeet %>
+  <%= @tweeet.tweeet %><br>
+  <% if @tweeet.image.attached? %>
+   <%=image_tag @tweeet.image%>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_tweeet_path(@tweeet) %> |

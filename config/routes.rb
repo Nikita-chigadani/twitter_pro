@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get "about", to: "about#index"
   get "home", to:"home#index"
   get "user", to: "user#index"
+  put '/tweeet/:id/like', to: 'tweeets#like', as: 'like'
 end

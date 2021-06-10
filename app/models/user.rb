@@ -10,7 +10,7 @@ class User < ApplicationRecord
   
   has_many :followers, foreign_key: "followed_id", class_name: "Friendship"
   has_many :following, foreign_key: "follower_id", class_name: "Friendship"
-  mount_uploader :avatar, AvatarUploader
+  has_one_attached :avatar
 
   
 

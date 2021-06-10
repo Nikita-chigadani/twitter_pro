@@ -1,5 +1,5 @@
 class TweeetsController < ApplicationController
-  before_action :set_tweeet, only: %i[ show edit update destroy ]
+  before_action :set_tweeet, only: %i[ show edit update destroy like ]
   before_action :authenticate_user!, except: [:index, :show ]
 
   # GET /tweeets or /tweeets.json
@@ -21,6 +21,11 @@ class TweeetsController < ApplicationController
   def edit
   end
 
+  def like
+    @tweeet = Tweeet.find(params[:id])
+    Like.create(user_id: current_user.id, tweeet_id: @tweeet.id)
+    redirect_to root_path(@tweeet)
+  end
   # POST /tweeets or /tweeets.json
   def create
     @tweeet = current_user.tweeets.build(tweeet_params)
@@ -57,6 +62,7 @@ class TweeetsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -66,6 +72,6 @@ class TweeetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tweeet_params
-      params.require(:tweeet).permit(:tweeet, :avatar)
+      params.require(:tweeet).permit(:tweeet, :avatar, :image)
     end
 end
