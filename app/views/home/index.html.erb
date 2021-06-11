@@ -1,1 +1,19 @@
-<h2>This is my exam</h2>
+<div class="jumbtron">
+    <h1 style="text-align:center"><b>Chatter</b></h1>
+    <div class="well" id="chatbox" style="height:350px; border: solid 1px #222222; overflow-y: scroll">
+    
+    <% @messages.each do |message| %>
+        <%= render 'messages/message', message: message %>
+    <% end %>    
+    </div>
+    <%= simple_form_for(@message) do |f| %>
+    <div class="input-group mb-3">
+        <%= f.text_field :body, placeholder: "say HI to your friend", class: 'form-control' %>
+        <div class="input-group-append">
+            <%= f.submit "send", class: "btn btn-secondary"%>
+        </div>
+    </div>
+    <% end %>
+   
+
+</div>

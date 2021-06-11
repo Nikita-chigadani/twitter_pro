@@ -1,0 +1,43 @@
+
+<div class="ui segment">
+  <strong>Chatbox</strong>
+
+  <div class="ui list">
+    <div class="item">
+      <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+          <%= link_to recipient.usename, conversation_messages_path(conversation)%>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="ui segment">
+  <h3>All Users</h3>
+  <div class="ui list">
+    <% @users.each do |user| %>
+
+      <% if user.id != current_user.id %>
+      <div class="box">
+  	<article class="media">
+  		<div class="media-left">
+  			<figure class="image is-64x64">
+  				<img src="https://bulma.io/images/placeholders/64x64.png">
+  			</figure>
+  		</div>
+      <div class="item">
+        <%= user.usename %> <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+      </div>
+      </article>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

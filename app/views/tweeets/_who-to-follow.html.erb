@@ -10,9 +10,15 @@
             </div>
             <div class="media-content">
                 <div class="content">
+                 <% if user_signed_in?%>
                   <p>
                    <a href="users"><strong>Friends_list</strong>
                   </p>
+                  <% else %>
+                  <div class="alert alert-danger" role="alert">
+                        please! SIGN_IN to view
+                  </div>
+                 <% end %>
                 </div>
             </div>
         </article>

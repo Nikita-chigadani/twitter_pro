@@ -23,6 +23,7 @@
         <p class="alert"><% alert %></p>
       </div>
     <% end %>
+  
     <nav class="navbar is-info">
       <div class="navbar-brand">
       <%= link_to root_path, class:"navbar-item" do %>
@@ -42,13 +43,27 @@
             <%= link_to 'New Tweeet', new_tweeet_path, class: "button is-info is-inverted" %>
           </p>
           <% if user_signed_in? %>
-            <p class="control">
-              <%= link_to current_user.name, edit_user_registration_path, class: "button is-info" %>
-            </p>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <strong>More</strong> 
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><p class="control">
+              <strong><%= link_to current_user.name, edit_user_registration_path %></strong>
+            </p></li>
+            <li><p>
+              <strong><%= link_to "Logout", destroy_user_session_path, method: :delete %></strong>
+            </p></li>
 
-            <p>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-info" %>
-            </p>
+            <li><p>
+              <strong><%= link_to "Chatbox",conversations_path %></strong>
+            </p></li>
+
+          </ul>
+        </li>
+          
+
+            
           <% else %>
           <p class="control">
            <%= link_to 'Sign In', new_user_session_path, class: "button is-info" %>

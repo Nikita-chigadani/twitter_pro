@@ -4,7 +4,7 @@ class UsersController < ApplicationController
         respond_to do |format|
             format.html { render :index, locals: { users: users } }
           end
-        
+       
     end
      
     def show
