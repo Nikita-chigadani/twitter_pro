@@ -35,7 +35,7 @@
 			<% if @tweeet.liked?(current_user) %>
 				<%= button_to "Like", like_path(tweeet), method: "put",disabled: false %>
 			<% else %>
-				<%= button_to "Like", like_path(tweeet), method: "put" %>
+				<%= button_to "Like", like_path(tweeet), method: "put",disabled: true %>
 			<% end %>
 		<% end %>
         <% if user_signed_in? && current_user.id == tweeet.user_id %>

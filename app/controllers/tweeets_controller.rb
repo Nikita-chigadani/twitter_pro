@@ -24,6 +24,7 @@ class TweeetsController < ApplicationController
   def like
     @tweeet = Tweeet.find(params[:id])
     Like.create(user_id: current_user.id, tweeet_id: @tweeet.id)
+    @tweeet.save
     redirect_to root_path(@tweeet)
   end
   # POST /tweeets or /tweeets.json

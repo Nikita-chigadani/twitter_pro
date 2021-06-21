@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get "home", to:"home#index"
   get "user", to: "user#index"
   put '/tweeet/:id/like', to: 'tweeets#like', as: 'like'
+  get '/search', to: 'conversations#search', as: 'search_page'
   # delete '/messages/:id', to: 'messages#destroy'
 end
