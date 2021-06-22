@@ -1,13 +1,56 @@
-<p id="notice"><%= notice %></p>
+<div class="column is-full">
+	<nav class="panel">
+		<p class="panel-heading">Profile</p>
+		<div class="panel-block">
+			<article class="media">
+				<div class="media-left">
+					<figure class="image is-64x64">
+					 	<img src="https://bulma.io/images/placeholders/64x64.png">
+						
+					</figure>
+				</div>
+				<div class="media-content">
+					<div class="content">
+            <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-    <%= @user.name%>
-</p>
-@<%= @user.usename%><br>
-<% if @user.usename != current_user.usename %>
-    <%= link_to 'follow', user_friendships_path(@user),method: :post, class: 'btn btn-danger' unless @friendship.present? %>
-    <%= link_to 'unfollow', friendship_path(@friendship.id), method: :delete, class: 'btn btn-danger' if @friendship.present? %>
-    <h2>Followers: <%= @user.followers.count %></h2>
-    <h2>Following: <%= @user.following.count %></h2>
-<% end %>
+            <p>
+              <strong>Name:</strong>
+              <%= @user.name%>
+            </p>
+            Username: @<%= @user.usename%><br>
+            email: <%= @user.email%><br>
+            Birth_date:<%= @user.DOB %><br>
+            <p><%= @user.tweeets %></p>
+            
+            
+            <% if @user.usename != current_user.usename %>
+             
+              <%= link_to 'follow', user_friendships_path(@user),method: :post, class: 'btn btn-danger' unless @friendship.present? %>
+              <%= link_to 'unfollow', friendship_path(@friendship.id), method: :delete, class: 'btn btn-danger' if @friendship.present? %>
+
+             <div class="panel-block">
+			        <div class="level is-mobile">
+              <div class="level-item has-centered-text">
+					      <div>
+                <h3>Tweeets:<%= @user.tweeets.count %></h3>
+                </div>
+				       </div>
+               <div class="level-item has-centered-text">
+					      <div>
+                <h2>Followers: <%= @user.followers.count %></h2>
+                </div>
+				       </div>
+               <div class="level-item has-centered-text">
+					      <div>
+                <h2>Following: <%= @user.following.count %></h2>
+                </div>
+				       </div>
+               </div>
+				       </div>
+            <% end %>
+          </div>
+				</div>
+			</article>
+		</div>
+  </nav>
+</div>

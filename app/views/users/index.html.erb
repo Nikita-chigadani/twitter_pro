@@ -1,6 +1,6 @@
 <h1>Follow Friends</h1>
 <% users.each do |user| %>
- <% if user.usename != current_user.usename %>
+ 
  <div class="box">
   	<article class="media">
   		<div class="media-left">
@@ -10,14 +10,19 @@
   		</div>
     <div id="<%= dom_id(user) %>">
       
-      <p><%= user.name %></p>
+      
 
         @<%= user.usename%><br>
         
-            <%= link_to 'follow', user_friendships_path(user),method: :post, class: 'btn btn-danger' unless @friendship.present? %>
-            <%= link_to 'unfollow', friendship_path(@friendship.id), method: :delete, class: 'btn btn-danger' if @friendship.present? %>
-            <br><br>
-     <% end %>
+            <% if user_signed_in?%>
+            <% if user.usename != current_user.usename %>
+                <%= link_to user_path(user), class: "level-item" do %>Profile
+                <% end %>
+            <% else %>
+            <% end %>
+            
+
+            <% end %>
       
 
     </div>
